@@ -1,8 +1,9 @@
-import express, { json } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from "cors"
 import Transaction from './models/Transaction.js'
 import mongoose from 'mongoose';
+import serverless from 'serverless-http';
 
 const app = express();
 app.use(express.json());
@@ -64,4 +65,8 @@ app.delete('/api/transaction/:id', async (req,res)=>{
 })
 
 /**Listening to port */
-app.listen(4000,()=>console.log('listening to port'));
+const port = process.env.PORT || 3000;
+app.listen(port,()=>console.log('listening to port'));
+
+app.use('/.netlify/functions/index')
+export default serverless(app)
