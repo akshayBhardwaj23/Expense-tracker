@@ -2,7 +2,6 @@ import { FormEvent, useEffect, useState } from "react";
 import "./App.css";
 
 interface Props {
-  _id: string;
   name: string;
   description: string;
   datetime: string;
@@ -14,35 +13,16 @@ function App() {
   const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
   const [transactions, setTransactions] = useState<Props[]>([]);
-  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     getTransactions().then(setTransactions);
-  }, [flag]);
+  }, [transactions]);
 
   async function getTransactions() {
     const url = import.meta.env.VITE_API_URL + "/transactions";
     const response = await fetch(url);
     return await response.json();
   }
-
-  const deleteTransactions = (index: string) => {
-    const url = import.meta.env.VITE_API_URL + "/transaction/" + index;
-    console.log(url);
-    fetch(url, {
-      method: "DELETE",
-      headers: { "content-type": "application/json" },
-    })
-      .then((res) => {
-        res.json().then((json) => {
-          console.log("Result: ", json);
-          setFlag((prev) => !prev);
-        });
-      })
-      .catch((err) => {
-        console.error("There was some problem: ", err);
-      });
-  };
 
   /**Method to add transactions by calling endpoint */
   const addNewTransaction = (ev: FormEvent) => {
@@ -68,8 +48,6 @@ function App() {
         setDescription("");
         setDatetime("");
         console.log("Result: ", json);
-        /**Trigger the useEffect Hook */
-        setFlag((prev) => !prev);
       });
     });
   };
@@ -95,7 +73,7 @@ function App() {
               value={name}
               required
               onChange={(ev) => setName(ev.target.value)}
-              placeholder={"+/- (Product name): e.g., -300 Shoes"}
+              placeholder={"+200 new Samsung TV"}
             ></input>
             <input
               type="datetime-local"
@@ -132,14 +110,6 @@ function App() {
                     {transaction.price}
                   </div>
                   <div className="datetime">{transaction.datetime}</div>
-                </div>
-                <div className="btn">
-                  <button
-                    className="button-56"
-                    onClick={() => deleteTransactions(transaction._id)}
-                  >
-                    Delete
-                  </button>
                 </div>
               </div>
             ))}
