@@ -1,30 +1,65 @@
-# React + TypeScript + Vite
+# Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Expense Tracker! This is a lightweight web application built with **ReactJS, TypeScript, and Node.js**. It helps you manage and calculate your expenses effortlessly.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User-friendly Interface**: Simple and intuitive design for easy navigation.
+- **Expense Calculation**: Keep track of your expenses and calculate totals easily.
+- **Efficient**: Built with performance in mind to ensure smooth usage.
+- **Responsive**: Works seamlessly on desktop and mobile devices.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **ReactJS**: Frontend framework for building user interfaces.
+- **TypeScript**: Adds static typing to JavaScript to improve developer productivity and code quality.
+- **Node.js**: JavaScript runtime environment for building scalable server-side applications.
+- **JavaScript**: Core programming language used for both frontend and backend development.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+To get started with Expense Tracker, follow these steps:
+
+1. **Clone the Repository**:
+```
+git clone https://github.com/your-username/expense-tracker.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Install Dependencies**:
+```
+cd expense-tracker
+npm install
+```
+3. **Create a .env.local file in the API folder with MONGODB_URL**
+
+4. **Run the Application**:
+```
+npm run dev
+
+#To run express server
+cd API
+node index.js
+```
+
+5. **Add another .env.local file in the root folder with the below contents**
+```
+VITE_API_URL=http://localhost:4000/api
+##At the deployment server set the environment variable to the application  URL where our API will be hosted
+```
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, enhancements, or bug fixes, feel free to open an issue or create a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- Thanks to the creators of ReactJS, TypeScript, and Node.js for providing such powerful tools.
+- Special thanks to all contributors who help make this project better.
+
+## Contact
+
+For any inquiries or support, feel free to contact [akshaybhardwaj96.ab@gmail.com](mailto:akshaybhardwaj96.ab@gmail.com).
