@@ -58,7 +58,7 @@ app.delete('/api/transaction/:id', async (req,res)=>{
     const transaction = await Transaction.findByIdAndDelete({_id: req.params.id})
     
     /**Chekc if there was any transaction deleted */
-    if (!transaction) return res.status(404).send('The transaction with the given ID was not found.');
+    if (!transaction) return res.status(404).send('The transaction with the given id was not found.');
 
     res.send(transaction);
 })
