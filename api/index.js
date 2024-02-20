@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 /**To config .env variables */
-dotenv.config()
+dotenv.config({path:'./.env.local'})
 
 /**Cross-Origin Resource Sharing in Node.js is a 
  * mechanism by which a front-end client can make
