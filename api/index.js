@@ -64,4 +64,5 @@ app.delete('/api/transaction/:id', async (req,res)=>{
 })
 
 /**Listening to port */
-app.listen(4000,()=>console.log('listening to port'));
+const port = process.env.PORT || 4000
+app.listen(port,()=>console.log('listening to port'));
