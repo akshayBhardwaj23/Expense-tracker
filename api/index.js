@@ -44,6 +44,25 @@ app.get('/api/transactions',async (req,res)=>{
     /**Fetch all the documents */
     const transactions = await Transaction.find()
     res.send(transactions);
+
+    } catch (error) {
+        console.error('Not able to connect to mongoDB',error);    
+    }
+    
+})
+
+app.delete('/api/transaction/:id', async (req,res)=>{
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log('Connected to MongoDB');
+    
+    /**Delete and get the deleted transaction */
+    const transaction = await Transaction.findByIdAndDelete({_id: req.params.id})
+    
+    /**Chekc if there was any transaction deleted */
+    if (!transaction) return res.status(404).send('The transaction with the given id was not found.');
+
+    res.send(transaction);
+
 })
 
 /**Listening to port */
